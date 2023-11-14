@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: python:3.8
+
+    working_directory: C:\Users\mayuk\Downloads\CircleCI_demo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: |
+            pip install -r requirements.txt  # Modify as needed
+
+      - run:
+          name: Run tests
+          command: |
+            pytest main_test.py
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
